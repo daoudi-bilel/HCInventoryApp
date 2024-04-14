@@ -6,6 +6,6 @@ export interface EmployeesPayload {
     }[];
     totalItems: number;
     totalPages: number;
-    pageNumber: number;
-    pageSize: number;
+    page: number;
+    size: number;
   }

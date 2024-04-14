@@ -4,12 +4,19 @@ import * as employeeActions from './employee.actions';
 
 export const _employeeReducer = createReducer(
     initialState,
-    on(employeeActions.fetchEmployeesSuccess, (state, action) =>{
-      return {
-        ...state,
-        employees : action.employees,
-      }
-    }),
+    on(employeeActions.fetchEmployeesSuccess, (state, { employees,
+        totalItems,
+        totalPages,
+        page,
+        size
+      }) => ({
+      ...state,
+      employees,
+      totalItems,
+      totalPages,
+      page,
+      size
+   })),
     on(employeeActions.fetchEmployeeByIDSuccess, (state, action) => ({
       ...state,
       selectedEmployee: action.employee,
@@ -21,6 +28,10 @@ export const _employeeReducer = createReducer(
     on(employeeActions.updateEmployeeSuccess, (state, action) => ({
       ...state,
       selectedEmployee: action.updatedEmployee,
+    })),
+    on(employeeActions.searchEmployeesByKeywordSuccess, (state, action) => ({
+      ...state,
+      employees: action.searchedEmployees,
     })),
   );
 

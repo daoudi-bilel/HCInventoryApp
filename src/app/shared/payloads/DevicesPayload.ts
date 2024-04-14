@@ -2,10 +2,10 @@ export interface DevicesPayload {
     content: {
       id: number;
       type: string;
-      decription: string;
+      description: string;
     }[];
     totalItems: number;
     totalPages: number;
-    pageNumber: number;
-    pageSize: number;
+    page: number;
+    size: number;
   }

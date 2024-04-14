@@ -11,16 +11,26 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
 
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot({}),
@@ -28,7 +38,12 @@ import { HttpClientModule } from '@angular/common/http';
     StoreDevtoolsModule.instrument({
       name: 'app',
     }),
-    
+
+    MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

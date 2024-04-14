@@ -1,15 +1,44 @@
-.example-spacer {
-    flex: 1 1 auto;
-}
-mat-form-field {
-  width: 100%;
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   margin: auto;
-}
-.main-body {
-  max-width: 80%;
-  margin: 20px auto;
-}
-.action-icon:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
+  padding: 0;
+  max-width: 1950px;
+ }
+ 
+ .app-navbar {
+  flex: 0 0 10%;
+  background-color: #303f9f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .main-container {
+  flex: 1;
+  overflow: auto;
+ }
+ 
+ .app-footer {
+  flex: 0 0 9%;
+  background-color: #303f9f; // Darker shade for the footer
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ @media (max-width: 992px) {
+   .app-navbar, .app-footer {
+      flex: 0 0 8%;
+   }
+  
+   .main-container {
+      flex: 1;
+   }
+  }
+ 

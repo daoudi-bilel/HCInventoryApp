@@ -1,0 +1,30 @@
+.search-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+        .mat-form-field {
+            width: 20vw;
+        }
+    }
+
+  
+    ::ng-deep .mat-form-field .mat-input-element {
+        color: white !important;
+    }
+
+    ::ng-deep .mat-form-field .mat-input-element::placeholder {
+        color: white !important;
+    }
+
+    ::ng-deep .mat-form-field .mat-form-field-label {
+        color: white !important;
+    }
+
+    ::ng-deep .mat-form-field .mat-form-field-underline {
+        background-color: white;
+    }
+    ::ng-deep .mat-form-field:hover .mat-form-field-underline,
+    ::ng-deep .mat-form-field:hover .mat-form-field-ripple {
+        background-color: #303f9f !important;
+    }

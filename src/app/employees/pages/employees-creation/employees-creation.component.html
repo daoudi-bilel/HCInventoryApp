@@ -1,0 +1,18 @@
+<app-creation-dialog 
+    [title]="isEdit? 'Update Employee': 'Create Employee'" 
+    (updatedID)="onUpdate($event)"
+    (deletedID)="onDelete()"
+    (handleSave)="onCreate()"
+    [isEdit]="isEdit"
+    >
+  <form [formGroup]="employeeForm">
+     <mat-form-field appearance="outline">
+       <mat-label>Name</mat-label>
+       <input matInput [formControl]="employeeForm.controls.name">
+     </mat-form-field>
+     <mat-form-field appearance="outline">
+       <mat-label>Email</mat-label>
+       <input matInput [formControl]="employeeForm.controls.email">
+     </mat-form-field>
+  </form>
+</app-creation-dialog>

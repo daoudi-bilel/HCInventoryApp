@@ -1,0 +1,22 @@
+<app-creation-dialog 
+    [title]="isEdit? 'Update Device': 'Create Device'" 
+    (updatedID)="onUpdate($event)"
+    (deletedID)="onDelete()"
+    (handleSave)="onCreate()"
+    [isEdit]="isEdit"
+    >
+ <form [formGroup]="deviceForm">
+  
+  <mat-form-field appearance="outline" id="type">
+    <mat-label>Type</mat-label>
+    <input matInput [formControl]="deviceForm.controls.type">
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" id="description">
+    <mat-label>Description</mat-label>
+    <input matInput [formControl]="deviceForm.controls.description">
+  </mat-form-field>
+  
+    
+ </form>
+ </app-creation-dialog>

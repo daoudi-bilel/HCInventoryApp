@@ -1,7 +1,7 @@
 export interface Device {
     id: number;
     type: string;
-    decription: string;
+    description: string;
     employeeID?: number;
   }
   

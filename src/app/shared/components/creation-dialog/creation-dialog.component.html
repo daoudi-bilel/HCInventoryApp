@@ -1,0 +1,25 @@
+<div class="header">
+    <h2 mat-dialog-title>
+      {{title}}
+    </h2>
+    <mat-icon *ngIf="isEdit" class="delete-icon" (click)="onDelete()">delete</mat-icon>
+  </div>
+  
+  <mat-dialog-content>
+    
+    <ng-content></ng-content>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+   <button mat-button mat-dialog-close>Cancel</button>
+   
+   <button mat-button 
+           [mat-dialog-close]="data" 
+           cdkFocusInitial 
+           class="save-btn"
+           (click)="onSave()"
+      >Save
+    </button>
+
+  </mat-dialog-actions>
+  

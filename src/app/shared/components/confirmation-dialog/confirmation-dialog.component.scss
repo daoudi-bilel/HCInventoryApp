@@ -1,0 +1,28 @@
+.confirm {
+    background-color: transparent;
+    color: #303f9f;
+    border: 2px solid #303f9f; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+.confirm:hover{
+    background-color: #303f9f;
+    color: #ffffff; 
+  }
+  
+  
+  .cancel {
+    background-color: transparent;
+    color: #f44336; 
+    border: 2px solid #f44336; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .cancel:hover {
+    background-color: #f44336;
+    color: #ffffff; 
+  }
+  

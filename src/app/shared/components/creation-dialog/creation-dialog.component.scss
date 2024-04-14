@@ -1,0 +1,76 @@
+::ng-deep .mat-dialog-container {
+    background-color: #303030; /* Dark background */
+    color: #ffffff; /* Light text for contrast */
+   }
+   
+   ::ng-deep .mat-dialog-title,
+   ::ng-deep .mat-dialog-actions {
+    color: #ffffff; /* Light text for contrast */
+   }
+    mat-dialog-content {
+    background-color: #303030;
+    color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px;
+   }
+   
+   mat-form-field {
+    width: 100%;
+   }
+   
+   mat-dialog-actions {
+    background-color: #303030;
+    color: #ffffff; 
+    justify-content: flex-end;
+    gap: 16px;
+   }
+   .header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+   }
+   .delete-icon {
+    cursor: pointer;
+    color: #f44336;
+   }
+   .delete-icon:hover {
+    color: #ff5722; /* Change the color on hover */
+   }
+   
+   
+   
+   button {
+    color: #ffffff; 
+   }
+   button[mat-dialog-close] {
+    background-color: #f44336;
+   }
+   .save-btn {
+    background-color: #303f9f; 
+   }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: rgb(194, 192, 192) !important;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: white!important;
+    }
+
+    ::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+        caret-color: rgb(236, 55, 55)!important;
+    }
+
+    ::ng-deep .mat-form-field-label {
+        color: rgb(194, 192, 192) !important;
+        font-weight: 700;
+    }
+
+    ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+        color: white !important;
+    }

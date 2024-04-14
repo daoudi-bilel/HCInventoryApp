@@ -1,0 +1,13 @@
+.spinner-container {
+    display: flex;
+    position: fixed;
+    top: 6.5rem;
+    width: 100%;
+    height: 75vh;
+    margin: auto;
+    z-index: 50;
+    background: rgba(0, 66, 248, 0.575);
+    place-content: center;
+    cursor: wait;
+    flex-wrap: wrap;
+  }

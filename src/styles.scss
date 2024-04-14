@@ -1,4 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+    --primary-color: #000000; 
+    --secondary-color: #333333;
+    --accent-color: #666666; 
+    --background-color: #121212;
+    --text-color: #FFFFFF; 
+}
+
+
+* {
+    box-sizing: border-box;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+ font-family: 'Roboto', sans-serif;
+ color: var(--text-color);
+ background-color: var(--background-color);
+ margin: 0;
+}
+
+
+/* Snackbar custom */
+.mat-snack-bar-container {
+    top: 0; 
+    left: 30%; 
+    right: 0;
+    transform: translateX(-50%);
+    margin: auto; 
+    position: fixed;
+}
+.snackbar-success {
+    background-color: #E1FDDC;
+    color: #00C673; 
+    .mat-simple-snackbar-action {
+        color: #00C673 !important;
+        border: 1px solid #00C673;
+        border-radius: 10px;
+    }
+}
+.snackbar-error {
+    background-color: #ff5f42;
+    color: white;
+    .mat-simple-snackbar-action {
+        color: white !important;
+        border: 1px solid white;
+        border-radius: 10px;
+    }
+}
