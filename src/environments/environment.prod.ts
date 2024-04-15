@@ -5,7 +5,7 @@ export const APP_CONFIG: Environment = {
   //API_URL: 'http://localhost:5268/api/v1/',
 
   // REMOTE
-   API_URL: 'https://bilos.bsite.net/api/v1/api/v1/',
+   API_URL: 'https://bilos.bsite.net/api/v1/',
 };
 
 export const environment = {
