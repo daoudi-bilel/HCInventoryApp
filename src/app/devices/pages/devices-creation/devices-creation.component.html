@@ -10,11 +10,23 @@
   <mat-form-field appearance="outline" id="type">
     <mat-label>Type</mat-label>
     <input matInput [formControl]="deviceForm.controls.type">
+    <mat-error *ngIf="deviceForm.controls.type.invalid && deviceForm.controls.type.touched">
+      <!-- Error messages for type -->
+      <span *ngIf="deviceForm.controls.type.errors?.['required']">Type is required.</span>
+      <span *ngIf="deviceForm.controls.type.errors?.['minlength']">Type must be at least 5 characters long.</span>
+      <span *ngIf="deviceForm.controls.type.errors?.['maxlength']">Type must be no more than 128 characters long.</span>
+  </mat-error>
   </mat-form-field>
   
   <mat-form-field appearance="outline" id="description">
     <mat-label>Description</mat-label>
     <input matInput [formControl]="deviceForm.controls.description">
+    <mat-error *ngIf="deviceForm.controls.description.invalid && deviceForm.controls.description.touched">
+      <!-- Error messages for description -->
+      <span *ngIf="deviceForm.controls.description.errors?.['required']">Description is required.</span>
+      <span *ngIf="deviceForm.controls.description.errors?.['minlength']">Description must be at least 20 characters long.</span>
+      <span *ngIf="deviceForm.controls.description.errors?.['maxlength']">Description must be no more than 5000 characters long.</span>
+  </mat-error>
   </mat-form-field>
   
     

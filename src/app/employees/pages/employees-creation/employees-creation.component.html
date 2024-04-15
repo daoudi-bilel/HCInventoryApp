@@ -10,10 +10,23 @@
             <mat-form-field appearance="outline" class="form-field">
                 <mat-label>Name</mat-label>
                 <input matInput [formControl]="employeeForm.controls.name">
+                <mat-error *ngIf="employeeForm.controls.name.invalid && employeeForm.controls.name.touched">
+                    <!-- Error messages for name -->
+                    <span *ngIf="employeeForm.controls.name.errors?.['required']">Name is required.</span>
+                    <span *ngIf="employeeForm.controls.name.errors?.['minlength']">Name must be at least 5 characters long.</span>
+                    <span *ngIf="employeeForm.controls.name.errors?.['maxlength']">Name must be no more than 128 characters long.</span>
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="form-field">
                 <mat-label>Email</mat-label>
                 <input matInput [formControl]="employeeForm.controls.email">
+                <mat-error *ngIf="employeeForm.controls.email.invalid && employeeForm.controls.email.touched">
+                    <!-- Error messages for email -->
+                    <span *ngIf="employeeForm.controls.email.errors?.['required']">Email is required.</span>
+                    <span *ngIf="employeeForm.controls.email.errors?.['email']">Please enter a valid email address.</span>
+                    <span *ngIf="employeeForm.controls.email.errors?.['minlength']">Email must be at least 11 characters long.</span>
+                    <span *ngIf="employeeForm.controls.email.errors?.['maxlength']">Email must be no more than 128 characters long.</span>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row">
