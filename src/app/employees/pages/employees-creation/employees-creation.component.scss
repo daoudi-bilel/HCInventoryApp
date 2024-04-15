@@ -75,7 +75,6 @@
         color: white !important;
     }
 
-    //added
     .form-container {
         padding: 20px;
     }
@@ -150,3 +149,15 @@ mat-dialog-content {
     background-color: #424242;
     color: #ffffff; 
 }
+
+@media (max-width: 576px ) {
+    .form-container {
+        padding: 5px;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .form-field {
+        width: 100%;
+    }
+   }

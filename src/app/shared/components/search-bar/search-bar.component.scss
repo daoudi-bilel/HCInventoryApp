@@ -28,3 +28,11 @@
     ::ng-deep .mat-form-field:hover .mat-form-field-ripple {
         background-color: #303f9f !important;
     }
+
+    @media (max-width: 576px ) {
+        .search-container {    
+                .mat-form-field {
+                    width: 60vw;
+                }
+            }
+       }

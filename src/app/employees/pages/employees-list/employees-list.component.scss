@@ -84,4 +84,13 @@
         width: 80%;
         margin: auto;
     }
-   
+    @media (max-width: 576px ) {
+        .sub-header{
+            flex-direction: column-reverse;
+            width: 100%;
+            align-items: normal;
+        }
+        .mat-raised-button{
+            margin: 5px 2rem;
+        }
+       }
