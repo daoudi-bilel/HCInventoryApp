@@ -74,6 +74,7 @@ export class DevicesCreationComponent implements OnInit {
   onUpdate(id:number){
     if(this.checkFields()){
       const deviceFormData = this.deviceForm.value as Device;
+      deviceFormData.id = id;
       this.store.dispatch(updateDevice({updatedDevice: deviceFormData}));
     }
   }

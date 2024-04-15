@@ -87,7 +87,6 @@ export class EmployeesCreationComponent implements OnInit {
     this.store.select('device').subscribe((res: any) => {
       if(res)
         this.devices = res.devices;
-      console.log('device : ',this.devices)
     });
   }
 
