@@ -30,4 +30,8 @@ export class EmployeesService {
     return this.http.get<any>(this.employeesUrl, {params: params});
   }
 
+  updateEmployeeDevices = (id: number, deviceIds: number[]) => 
+    this.http.patch(`${this.employeesUrl}/${id}/devices`, deviceIds);
+   
+
 }

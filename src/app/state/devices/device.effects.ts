@@ -211,4 +211,68 @@ export class DeviceEffects {
         );
       })
     ));
-}
+    //ASSIGN
+    assignDeviceToEmployee$ = createEffect(() => {
+      return this.actions$.pipe(
+          ofType(deviceActions.assignDeviceToEmployee),
+          switchMap((action) => {
+              this.loadingScreenService.show();
+              return this.devicesService.assignDeviceToEmployee(action.device.id, action.employee.id).pipe(
+                  map(() => {
+                      this.snackBar.open('Device assigned to Employee successfully', 'Close', {
+                          duration: 3000,
+                          panelClass: 'snackbar-success',
+                          verticalPosition: 'top',
+                      });
+                      this.loadingScreenService.hide();
+                      return deviceActions.assignDeviceToEmployeeSuccess({
+                          device: action.device,
+                          employee: action.employee,
+                      });
+                  }),
+                  catchError((error) => {
+                      this.snackBar.open('Error while assigning device to employee', 'Close', {
+                          duration: 3000,
+                          panelClass: 'snackbar-error',
+                          verticalPosition: 'top',
+                      });
+                      this.loadingScreenService.hide();
+                      return EMPTY;
+                  })
+              );
+          })
+      );
+  });
+  
+  unassignDeviceFromEmployee$ = createEffect(() => {
+      return this.actions$.pipe(
+          ofType(deviceActions.unassignDeviceFromEmployee),
+          switchMap((action) => {
+              this.loadingScreenService.show();
+              return this.devicesService.unassignDeviceFromEmployee(action.device.id).pipe(
+                  map(() => {
+                      this.snackBar.open('Device unassigned from Employee successfully', 'Close', {
+                          duration: 3000,
+                          panelClass: 'snackbar-success',
+                          verticalPosition: 'top',
+                      });
+                      this.loadingScreenService.hide();
+                      return deviceActions.unassignDeviceFromEmployeeSuccess({
+                          device: action.device,
+                          employee: action.employee,
+                      });
+                  }),
+                  catchError((error) => {
+                      this.snackBar.open('Error while unassigning device from employee', 'Close', {
+                          duration: 3000,
+                          panelClass: 'snackbar-error',
+                          verticalPosition: 'top',
+                      });
+                      this.loadingScreenService.hide();
+                      return EMPTY;
+                  })
+              );
+          })
+      );
+  });
+  }

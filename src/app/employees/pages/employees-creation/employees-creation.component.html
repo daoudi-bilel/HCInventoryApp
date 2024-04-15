@@ -1,18 +1,30 @@
-<app-creation-dialog 
-    [title]="isEdit? 'Update Employee': 'Create Employee'" 
+<app-creation-dialog
+    [title]="isEdit ? 'Update Employee' : 'Create Employee'"
     (updatedID)="onUpdate($event)"
     (deletedID)="onDelete()"
     (handleSave)="onCreate()"
     [isEdit]="isEdit"
-    >
-  <form [formGroup]="employeeForm">
-     <mat-form-field appearance="outline">
-       <mat-label>Name</mat-label>
-       <input matInput [formControl]="employeeForm.controls.name">
-     </mat-form-field>
-     <mat-form-field appearance="outline">
-       <mat-label>Email</mat-label>
-       <input matInput [formControl]="employeeForm.controls.email">
-     </mat-form-field>
-  </form>
+    class="dialog-container">
+    <form [formGroup]="employeeForm" class="form-container">
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Name</mat-label>
+                <input matInput [formControl]="employeeForm.controls.name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="employeeForm.controls.email">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Devices</mat-label>
+                <mat-select [formControl]="employeeForm.controls.deviceIds" multiple>
+                    <mat-option *ngFor="let device of devices" [value]="device.id">
+                        {{ device.type }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
 </app-creation-dialog>

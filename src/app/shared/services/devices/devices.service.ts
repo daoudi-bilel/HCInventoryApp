@@ -30,4 +30,12 @@ export class DevicesService {
     return this.http.get<any>(this.devicesUrl, {params: params});
   }
 
+  assignDeviceToEmployee(deviceId: number, employeeId: number) {
+    return this.http.put(`api/devices/${deviceId}/employee`, { employeeId });
+  }
+
+  unassignDeviceFromEmployee(deviceId: number) {
+    return this.http.put(`api/devices/${deviceId}/employee`, null);
+  }
+
 }

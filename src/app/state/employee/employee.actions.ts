@@ -2,6 +2,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Employee } from '@appModels/employee';
 import { EmployeesPayload } from '@appPayloads/EmployeesPayload';
+import { Device } from '@appModels/device';
 
 export const FETCH_EMPLOYEES = '[Employee] Fetch Employee';
 export const FETCH_EMPLOYEES_SUCCESS = '[Employee] Fetch Employee Success';
@@ -26,6 +27,10 @@ export const DELETE_EMPLOYEE_FAILED = '[Employee] Delete Employee Failed';
 export const SEARCH_EMPLOYEES_BY_STATUS = '[Employees] Search Employees by Keyword';
 export const SEARCH_EMPLOYEES_BY_STATUS_SUCCESS = '[Employees]Search Employees By Keyword Success';
 export const SEARCH_EMPLOYEES_BY_STATUS_FAILED = '[Employees]Search Employees By Keyword Failed';
+
+export const UPDATE_EMPLOYEE_DEVICES = '[Employee] Update Employee Devices';
+export const UPDATE_EMPLOYEE_DEVICES_SUCCESS = '[Employee] Update Employee Devices Success';
+export const UPDATE_EMPLOYEE_DEVICES_FAILED = '[Employee] Update Employee Devices Failed';
 
 //FETCH
 export const fetchEmployees = createAction(
@@ -112,3 +117,18 @@ export const fetchEmployeeByID = createAction(
   export const searchEmployeesByKeywordFailed = createAction(
     SEARCH_EMPLOYEES_BY_STATUS_FAILED
   );
+
+  //LINK
+  export const updateEmployeeDevices = createAction(
+    UPDATE_EMPLOYEE_DEVICES,
+    props<{ id: number, deviceIds: number[] }>()
+   );
+   
+   export const updateEmployeeDevicesSuccess = createAction(
+    UPDATE_EMPLOYEE_DEVICES_SUCCESS
+   );
+   
+   export const updateEmployeeDevicesFailed = createAction(
+    UPDATE_EMPLOYEE_DEVICES_FAILED,
+    props<{ error: any }>()
+   );

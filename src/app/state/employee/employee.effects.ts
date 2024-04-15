@@ -133,7 +133,6 @@ export class EmployeeEffects {
               verticalPosition: 'top',
             });
             this.loadingScreenService.hide();
-            alert('error');
             return EMPTY;
           })
         );
@@ -211,4 +210,28 @@ export class EmployeeEffects {
         );
       })
     ));
+
+    updateEmployeeDevices$ = createEffect(() =>
+      this.actions$.pipe(
+         ofType(employeeActions.updateEmployeeDevices),
+         switchMap((action) => {
+           this.loadingScreenService.show();
+           return this.employeesService.updateEmployeeDevices(action.id, action.deviceIds).pipe(
+             map(() => {
+               this.loadingScreenService.hide();
+               return employeeActions.updateEmployeeDevicesSuccess();
+             }),
+             catchError((error) => {
+               this.snackBar.open('Error updating employee devices', 'Close', {
+                 duration: 3000, 
+                 panelClass: 'snackbar-error',
+                 verticalPosition: 'top',
+               });
+               this.loadingScreenService.hide();
+               return of(employeeActions.updateEmployeeDevicesFailed({ error }));
+             })
+           );
+         })
+      ));
+     
 }

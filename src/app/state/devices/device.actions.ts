@@ -1,6 +1,7 @@
 
 import { createAction, props } from '@ngrx/store';
 import { Device } from '@appModels/device';
+import { Employee } from '@appModels/employee';
 
 export const FETCH_DEVICES = '[Device] Fetch Device';
 export const FETCH_DEVICES_SUCCESS = '[Device] Fetch Device Success';
@@ -25,6 +26,15 @@ export const DELETE_DEVICE_FAILED = '[Device] Delete Device Failed';
 export const SEARCH_DEVICES_BY_STATUS = '[Devices] Search Devices by Keyword';
 export const SEARCH_DEVICES_BY_STATUS_SUCCESS = '[Devices]Search Devices By Keyword Success';
 export const SEARCH_DEVICES_BY_STATUS_FAILED = '[Devices]Search Devices By Keyword Failed';
+
+export const ASSIGN_DEVICE_TO_EMPLOYEE = '[Device] Assign Device to Employee';
+export const ASSIGN_DEVICE_TO_EMPLOYEE_SUCCESS = '[Device] Assign Device to Employee Success';
+export const ASSIGN_DEVICE_TO_EMPLOYEE_FAILED = '[Device] Assign Device to Employee Failed';
+
+export const UNASSIGN_DEVICE_FROM_EMPLOYEE = '[Device] Unassign Device from Employee';
+export const UNASSIGN_DEVICE_FROM_EMPLOYEE_SUCCESS = '[Device] Unassign Device from Employee Success';
+export const UNASSIGN_DEVICE_FROM_EMPLOYEE_FAILED = '[Device] Unassign Device from Employee Failed';
+
 
 //FETCH
 export const fetchDevices = createAction(
@@ -110,4 +120,36 @@ export const fetchDeviceByID = createAction(
     );
     export const searchDevicesByKeywordFailed = createAction(
       SEARCH_DEVICES_BY_STATUS_FAILED
+    );
+
+    //ASSIGN
+    export const assignDeviceToEmployee = createAction(
+    ASSIGN_DEVICE_TO_EMPLOYEE,
+    props<{ device: Device; employee: Employee }>()
+    );
+
+    export const assignDeviceToEmployeeSuccess = createAction(
+    ASSIGN_DEVICE_TO_EMPLOYEE_SUCCESS,
+    props<{ device: Device; employee: Employee }>()
+    );
+
+    export const assignDeviceToEmployeeFailed = createAction(
+    ASSIGN_DEVICE_TO_EMPLOYEE_FAILED,
+    props<{ error: any }>()
+    );
+
+    //UNASSIGN
+    export const unassignDeviceFromEmployee = createAction(
+      UNASSIGN_DEVICE_FROM_EMPLOYEE,
+      props<{ device: Device; employee: Employee }>()
+    );
+
+    export const unassignDeviceFromEmployeeSuccess = createAction(
+      UNASSIGN_DEVICE_FROM_EMPLOYEE_SUCCESS,
+      props<{ device: Device; employee: Employee }>()
+    );
+
+    export const unassignDeviceFromEmployeeFailed = createAction(
+      UNASSIGN_DEVICE_FROM_EMPLOYEE_FAILED,
+      props<{ error: any }>()
     );

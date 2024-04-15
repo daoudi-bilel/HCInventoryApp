@@ -28,6 +28,9 @@ import { EmployeeEffects } from '@appState/employee/employee.effects';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '../shared/shared.module';
 import { EmployeesCreationComponent } from './pages/employees-creation/employees-creation.component';
+import { DeviceEffects } from '@appState/devices/device.effects';
+import { DEVICE_STATE_NAME } from '@appState/devices/device.selectors';
+import { DeviceReducer } from '@appState/devices/device.reducer';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { EmployeesCreationComponent } from './pages/employees-creation/employees
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(EMPLOYEE_STATE_NAME,EmployeeReducer),
-    EffectsModule.forFeature([EmployeeEffects]),
+    StoreModule.forFeature(DEVICE_STATE_NAME,DeviceReducer),
+    EffectsModule.forFeature([EmployeeEffects,DeviceEffects]),
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
