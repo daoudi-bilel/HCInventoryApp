@@ -25,7 +25,7 @@ export class EmployeeEffects {
         this.loadingScreenService.show();
         return this.employeesService.getEmployees(action.pageNumber, action.pageSize).pipe(
           map((employees) => {
-            debugger
+            
             this.loadingScreenService.hide();
             return employeeActions.fetchEmployeesSuccess({
                employees: employees.content,
@@ -164,7 +164,7 @@ export class EmployeeEffects {
               return employeeActions.deleteEmployeeSuccess({ id: action.id });
             }),
             catchError((error) => {
-              debugger
+              
               let message = 'Error in deleting Employee';
               if(error.status == 409){
                 message = error.error.message;

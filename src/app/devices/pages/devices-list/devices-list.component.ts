@@ -41,7 +41,6 @@ export class DevicesListComponent implements OnInit {
   }
  
   initStores(){
-   debugger
      this.isLoading = true;
      this.store.dispatch(fetchDevices({pageNumber:this.currentPage,pageSize:10}));
      this.store.select('device').subscribe(

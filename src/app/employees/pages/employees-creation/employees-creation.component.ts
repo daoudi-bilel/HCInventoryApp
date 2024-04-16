@@ -4,10 +4,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Device } from '@appModels/device';
 import { Employee } from '@appModels/employee';
-import { fetchDevices } from '@appState/devices/device.actions';
-import { createEmployee, deleteEmployee, fetchEmployeeByID, updateEmployee, updateEmployeeDevices } from '@appState/employee/employee.actions';
+import { fetchDevices, fetchDevicesFailed } from '@appState/devices/device.actions';
+import { DeviceState } from '@appState/devices/device.state';
+import { createEmployee, deleteEmployee, fetchEmployeeByID, fetchEmployees, updateEmployee, updateEmployeeDevices } from '@appState/employee/employee.actions';
 import { EmployeeState } from '@appState/employee/employee.state';
 import { Store } from '@ngrx/store';
+import { EMPTY, Observable, mergeMap, of, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-employees-creation',
@@ -46,7 +48,7 @@ export class EmployeesCreationComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    debugger
+    
     this.initDevices();
     if(this.data){
       this.isEdit = true;
@@ -92,28 +94,53 @@ export class EmployeesCreationComponent implements OnInit {
 
   onCreate(){
     if(this.checkFields()){
-      debugger
+      
       const employeeFormData = this.employeeForm.value as any;
       this.store.dispatch(createEmployee({employee: employeeFormData}));
     }
   }
-  onUpdate(id:number){
-    debugger
-    if(this.checkFields()){
-      const employeeFormData = this.employeeForm.value as Employee;
-      employeeFormData.id = id;
-      this.store.dispatch(updateEmployee({updatedEmployee: employeeFormData}));
+  onUpdate(id: number) {
+    
+    if (this.checkFields()) {
+        const employeeFormData = this.employeeForm.value as Employee;
+        employeeFormData.id = id;
+        const currentDeviceIds = this.employeeForm.controls.deviceIds.value;
 
+        const originalDeviceIds = this.employeeData.devices ? this.employeeData.devices.map(device => device.id) : [];
+        const deviceIdsChanged = JSON.stringify(currentDeviceIds?.sort()) !== JSON.stringify(originalDeviceIds.sort());
 
-      const currentDeviceIds = this.employeeForm.controls.deviceIds.value;
-      if(this.employeeData.devices){
-        const originalDeviceIds = this.employeeData.devices.map(device => device.id);
-        if (currentDeviceIds  &&(JSON.stringify(currentDeviceIds.sort()) !== JSON.stringify(originalDeviceIds.sort()))) {
-          this.store.dispatch(updateEmployeeDevices({ id: id, deviceIds: currentDeviceIds }));
-      }
-      }
+        if (deviceIdsChanged) {
+            const conflictingDevice = currentDeviceIds?.find(deviceId => {
+                const device = this.devices.find((dev:any) => dev.id === deviceId);
+                return device && device.employeeId && device.employeeId !== id;
+            });
+
+            if (conflictingDevice) {
+                this.snackBar.open('Error: Selected devices are already linked to other employees', 'Close', {
+                    duration: 3000,
+                    panelClass: 'snackbar-error',
+                    verticalPosition: 'top',
+                });
+                return;
+            }
+        }
+        
+        this.store.dispatch(updateEmployee({ updatedEmployee: employeeFormData }));
+
+        setTimeout(() => {
+          if (deviceIdsChanged && currentDeviceIds) {
+              this.store.dispatch(updateEmployeeDevices({ id: id, deviceIds: currentDeviceIds }));
+          }
+      }, 500); 
     }
-  }
+}
+
+
+
+   
+   
+   
+   
   onDelete(): void {
     this.store.dispatch(deleteEmployee({id: this.employeeID}));
  }

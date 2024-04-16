@@ -25,7 +25,7 @@ export class DeviceEffects {
         this.loadingScreenService.show();
         return this.devicesService.getDevices(action.pageNumber, action.pageSize).pipe(
           map((devices) => {
-            debugger
+            
             this.loadingScreenService.hide();
             return deviceActions.fetchDevicesSuccess({
                devices: devices.content,
@@ -48,7 +48,7 @@ export class DeviceEffects {
         this.loadingScreenService.show();
         return this.devicesService.getDeviceById(action.id).pipe(
           map((res: any) => {
-            debugger
+            
             this.loadingScreenService.hide();
             return deviceActions.fetchDeviceByIDSuccess({
               device: res,
@@ -165,7 +165,7 @@ export class DeviceEffects {
               return deviceActions.deleteDeviceSuccess({ id: action.id });
             }),
             catchError((error) => {
-              debugger
+              
               let message = 'Error in deleting Employee';
               if(error.status == 409){
                 message = error.error.message;

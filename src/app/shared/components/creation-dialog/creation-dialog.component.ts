@@ -33,7 +33,7 @@ export class CreationDialogComponent implements OnInit {
   }
 
   onSave(){
-    debugger
+  
       if(this.isEdit)
        this.updatedID.emit(this.data.id);
       else

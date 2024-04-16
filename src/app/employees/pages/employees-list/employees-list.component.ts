@@ -40,7 +40,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
  }
 
  initStores(){
-  debugger
+  
     this.isLoading = true;
     this.store.dispatch(fetchEmployees({pageNumber:this.currentPage,pageSize:10}));
     this.store.select('employee').subscribe(
